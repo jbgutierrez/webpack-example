@@ -7,7 +7,12 @@ route = ->
     else
       require './home-page.coffee'
 
+      if ENV is "desktop"
+        require "./desktop-patches.coffee"
+
   require './layout.coffee'
+
 
 route()
 window.onhashchange = route
+
