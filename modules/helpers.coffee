@@ -1,1 +1,1 @@
-console.log "modules/helpers.coffee"
+console.log "helpers.coffee"

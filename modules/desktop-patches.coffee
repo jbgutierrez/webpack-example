@@ -1,1 +1,1 @@
-console.log "modules/desktop-patches.coffee"
+console.log "desktop-patches.coffee"
