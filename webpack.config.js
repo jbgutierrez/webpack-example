@@ -1,7 +1,7 @@
 var path    = require('path'),
     webpack = require('webpack');
 
-function contextFor(channel) {
+function contextFor(channel, externals) {
     return {
         context: path.join(__dirname, 'modules'),
         name: channel,
@@ -22,6 +22,7 @@ function contextFor(channel) {
         resolve: {
             extensions: ["", ".coffee"]
         },
+        externals: externals,
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
@@ -37,6 +38,10 @@ function contextFor(channel) {
     }
 }
 module.exports = [
-    contextFor('mobile'),
-    contextFor('desktop')
+    contextFor('mobile', {
+        "jquery": "Zepto"
+    }),
+    contextFor('desktop', {
+        "jquery": "jQuery"
+    })
 ]

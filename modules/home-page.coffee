@@ -1,5 +1,6 @@
 require './helpers'
 console.log "home-page"
+$ = require 'jquery'
 
 if ENV is "desktop"
   require.ensure [], ->
