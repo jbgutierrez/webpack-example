@@ -11,7 +11,7 @@ function contextFor(channel) {
         output: {
             path: path.join(__dirname, 'builds'),
             filename: channel + ".js",
-            chunkFilename: channel + ".[id].chunk.js"
+            chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
         module: {
             loaders: [
