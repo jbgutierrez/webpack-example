@@ -21,7 +21,11 @@ function contextFor(channel) {
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
-                children: true
+                children: true,
+                minChunks: function(module, count){
+                    return (count > 2 && module.size() < 128) ||
+                            ~module._source._value.indexOf('promote: true');
+                }
             }),
             new webpack.DefinePlugin({
                 ENV: JSON.stringify(channel)
