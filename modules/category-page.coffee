@@ -1,5 +1,5 @@
-require './helpers.coffee'
-console.log "category-page.coffee"
+require './helpers'
+console.log "category-page"
 
 module.exports = ->
-  console.log "category-page.coffee init"
+  console.log "category-page init"

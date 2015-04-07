@@ -1,8 +1,8 @@
-require './helpers.coffee'
-require './lookbook-configuration.coffee'
-video = require './video.coffee'
-console.log "lookbook-page.coffee"
+require './helpers'
+require './lookbook-configuration'
+video = require './video'
+console.log "lookbook-page"
 
 module.exports = ->
-  console.log "lookbook-page.coffee init"
+  console.log "lookbook-page init"
   video.setup()

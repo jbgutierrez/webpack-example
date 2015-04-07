@@ -1,10 +1,10 @@
-require './helpers.coffee'
-require './product-helpers.coffee'
-console.log "product-page.coffee"
+require './helpers'
+require './product-helpers'
+console.log "product-page"
 
 if ENV is "desktop"
   require.ensure [], ->
-    require './admin-helpers.coffee'
+    require './admin-helpers'
 
 module.exports = ->
-  console.log "product-page.coffee init"
+  console.log "product-page init"

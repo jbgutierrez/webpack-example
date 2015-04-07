@@ -6,7 +6,7 @@ function contextFor(channel) {
         context: path.join(__dirname, 'modules'),
         name: channel,
         entry: {
-            router: './router.coffee'
+            router: './router'
         },
         output: {
             path: path.join(__dirname, 'builds'),
@@ -18,6 +18,9 @@ function contextFor(channel) {
                 { test: /\.coffee$/, loader: 'coffee-loader' },
                 { test: /\.json$/, loader: 'json-loader' }
             ]
+        },
+        resolve: {
+            extensions: ["", ".coffee"]
         },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({

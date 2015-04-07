@@ -1,5 +1,5 @@
-require './helpers.coffee'
-console.log "corporative-page.coffee"
+require './helpers'
+console.log "corporative-page"
 
 module.exports = ->
-  console.log "corporative-page.coffee init"
+  console.log "corporative-page init"

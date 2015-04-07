@@ -1,9 +1,9 @@
-require './helpers.coffee'
-console.log "home-page.coffee"
+require './helpers'
+console.log "home-page"
 
 if ENV is "desktop"
   require.ensure [], ->
-    require './admin-helpers.coffee'
+    require './admin-helpers'
 
 module.exports = ->
-  console.log "home-page.coffee init"
+  console.log "home-page init"
