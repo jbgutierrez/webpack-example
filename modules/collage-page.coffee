@@ -1,6 +1,6 @@
-require './helpers'
-require './lookbook-configuration'
-video = require './video'
+require 'helpers'
+require 'lookbook-configuration'
+video = require 'video'
 console.log "lookbook-page"
 
 module.exports = ->

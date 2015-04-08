@@ -1,5 +1,19 @@
-var path    = require('path'),
+var fs      = require('fs'),
+    path    = require('path'),
     webpack = require('webpack');
+
+function loadManifest(manifestFile) {
+    var alias = {},
+        modules = JSON.parse(fs.readFileSync(manifestFile)),
+        moduleName, version;
+
+    for (moduleName in modules) {
+        version = modules[moduleName].replace('=', '');
+        alias[moduleName] = path.join(__dirname, 'modules/versions/' + moduleName + '-v.' + version);
+    }
+
+    return alias;
+}
 
 function contextFor(channel, externals) {
     return {
@@ -20,7 +34,8 @@ function contextFor(channel, externals) {
             ]
         },
         resolve: {
-            extensions: ["", ".coffee"]
+            extensions: ["", ".coffee"],
+            alias: loadManifest('versions.manifest.json')
         },
         externals: externals,
         resolveLoader: { root: path.join(__dirname, "nosync/node_modules") },

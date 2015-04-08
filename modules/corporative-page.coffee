@@ -1,4 +1,4 @@
-require './helpers'
+require 'helpers'
 console.log "corporative-page"
 
 module.exports = ->

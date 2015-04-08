@@ -1,0 +1,19 @@
+{
+  "admin-helpers": "1.0",
+  "category-page": "1.0",
+  "collage-page": "1.0",
+  "corporative-page": "1.0",
+  "desktop-patches": "1.0",
+  "helpers": "1.0",
+  "home-page": "1.0",
+  "layout": "1.0",
+  "lookbook-collage": "1.0",
+  "lookbook-configuration": "1.0",
+  "lookbook-page": "1.0",
+  "lookbook-simple": "1.0",
+  "outline": "1.0",
+  "product-helpers": "1.0",
+  "product-page": "1.0",
+  "router": "1.0",
+  "video": "=1.0"
+}
