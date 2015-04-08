@@ -23,6 +23,7 @@ function contextFor(channel, externals) {
             extensions: ["", ".coffee"]
         },
         externals: externals,
+        resolveLoader: { root: path.join(__dirname, "nosync/node_modules") },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
