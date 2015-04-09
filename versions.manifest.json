@@ -1,19 +1,30 @@
 {
-  "admin-helpers": "1.0",
-  "category-page": "1.0",
-  "collage-page": "1.0",
-  "corporative-page": "1.0",
-  "desktop-patches": "1.0",
-  "helpers": "1.0",
-  "home-page": "1.0",
-  "layout": "1.0",
-  "lookbook-collage": "1.0",
-  "lookbook-configuration": "1.0",
-  "lookbook-page": "1.0",
-  "lookbook-simple": "1.0",
-  "outline": "1.0",
-  "product-helpers": "1.0",
-  "product-page": "1.0",
-  "router": "1.0",
-  "video": "=1.0"
+  "annotations": {
+    "$author": "jbgutierrez",
+    "$updated": "2015-04-09T23:34:11.489Z",
+    "$version": "1.16@a4be35"
+  },
+  "rsync-crontab": [
+    "0 0 * * *",
+    "0 14 * * 1,4"
+  ],
+  "modules": {
+    "admin-helpers": "1.1",
+    "category-page": "1.1",
+    "collage-page": "1.1",
+    "corporative-page": "1.1",
+    "desktop-patches": "1.1",
+    "helpers": "1.1",
+    "home-page": "1.1",
+    "layout": "1.1",
+    "lookbook-collage": "1.1",
+    "lookbook-configuration": "1.1",
+    "lookbook-page": "1.1",
+    "lookbook-simple": "1.1",
+    "outline": "1.1",
+    "product-helpers": "1.1",
+    "product-page": "1.1",
+    "router": "1.1",
+    "video": "=1.0"
+  }
 }

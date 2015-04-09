@@ -1,19 +1,23 @@
 var fs      = require('fs'),
     path    = require('path'),
-    webpack = require('webpack');
+    webpack = require('webpack'),
+    version, alias = {};
 
 function loadManifest(manifestFile) {
-    var alias = {},
-        modules = JSON.parse(fs.readFileSync(manifestFile)),
-        moduleName, version;
+    var manifestFile = [__dirname, 'versions.manifest.json'].join(path.sep),
+        config = JSON.parse(fs.readFileSync(manifestFile)),
+        modules = config.modules,
+        moduleName, moduleVersion;
 
     for (moduleName in modules) {
-        version = modules[moduleName].replace('=', '');
-        alias[moduleName] = path.join(__dirname, 'modules/versions/' + moduleName + '-v.' + version);
+        moduleVersion = modules[moduleName].replace('=', '');
+        alias[moduleName] = path.join(__dirname, 'modules/versions/' + moduleName + '-v.' + moduleVersion);
     }
 
-    return alias;
+    version = config.annotations.$version.split('@')[0]
 }
+
+loadManifest();
 
 function contextFor(channel, externals) {
     return {
@@ -24,7 +28,7 @@ function contextFor(channel, externals) {
         },
         output: {
             path: path.join(__dirname, 'builds'),
-            filename: channel + ".js",
+            filename: channel + "-v." + version + ".js",
             chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
         module: {
@@ -35,7 +39,7 @@ function contextFor(channel, externals) {
         },
         resolve: {
             extensions: ["", ".coffee"],
-            alias: loadManifest('versions.manifest.json')
+            alias: alias
         },
         externals: externals,
         resolveLoader: { root: path.join(__dirname, "nosync/node_modules") },
@@ -53,6 +57,7 @@ function contextFor(channel, externals) {
         ]
     }
 }
+
 module.exports = [
     contextFor('mobile', {
         "jquery": "Zepto"
