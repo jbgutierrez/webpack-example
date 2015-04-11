@@ -1,23 +1,8 @@
-var fs      = require('fs'),
-    path    = require('path'),
-    webpack = require('webpack'),
-    version, alias = {};
-
-function loadManifest(manifestFile) {
-    var manifestFile = [__dirname, 'versions.manifest.json'].join(path.sep),
-        config = JSON.parse(fs.readFileSync(manifestFile)),
-        modules = config.modules,
-        moduleName, moduleVersion;
-
-    for (moduleName in modules) {
-        moduleVersion = modules[moduleName].replace('=', '');
-        alias[moduleName] = path.join(__dirname, 'modules/versions/' + moduleName + '-v.' + moduleVersion);
-    }
-
-    version = config.annotations.$version.split('@')[0]
-}
-
-loadManifest();
+var path            = require('path'),
+    webpack         = require('webpack'),
+    webpackVersions = require('./nosync/compile-assets.js'),
+    version         = webpackVersions.version,
+    alias           = webpackVersions.alias;
 
 function contextFor(channel, externals) {
     return {

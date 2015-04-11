@@ -143,3 +143,17 @@ if __filename is __main
         console.error err.details if err.details
       else
         manifest.versionate(module)
+else
+  manifest = [ __dirname, '..', 'versions.manifest.json' ].join path.sep
+  config = JSON.parse fs.readFileSync manifest
+  modules = config.modules
+  alias = {}
+  for moduleName, moduleVersion of modules
+    moduleVersion = moduleVersion.replace('=', '')
+    alias[moduleName] = path.join __dirname, '..', 'modules/versions/' + moduleName + '-v.' + moduleVersion
+
+  moduleVersion = config.annotations.$version.split('@')[0]
+
+  module.exports =
+    version: moduleVersion
+    alias: alias
