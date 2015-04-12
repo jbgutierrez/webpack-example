@@ -1,10 +1,10 @@
 {
-  "annotations": {
+  "build-info": {
     "$author": "jbgutierrez",
     "$updated": "2015-04-09T23:34:11.489Z",
     "$version": "1.16@a4be35"
   },
-  "rsync-crontab": [
+  "release-schedules": [
     "0 0 * * *",
     "0 14 * * 1,4"
   ],

@@ -9,14 +9,14 @@ DEBUG = true
 debug = (msg) ->
   console.log "DEBUG: #{msg}"
 
-class RsyncSchedule
+class VersionScheduler
   @setup: (expressions) ->
     now = new Date
     HOURS = 60 * 60 * 1000
-    @lastSync = new Date +now - HOURS * 24
+    @releasedAt = new Date +now - HOURS * 24
 
     options =
-      currentDate: @lastSync
+      currentDate: @releasedAt
       endDate: now
 
     for expression in expressions
@@ -24,12 +24,12 @@ class RsyncSchedule
       try
         while true
           sync = interval.next()
-          @lastSync = sync if sync > @lastSync
+          @releasedAt = sync if sync > @releasedAt
       catch
 
-    @lastSync = now if DEBUG
+    @releasedAt = now if DEBUG
 
-    debug "last rsync took place at #{@lastSync}"
+    debug "last rsync took place at #{@releasedAt}"
 
 class Version
   constructor: (@file) ->
@@ -65,7 +65,7 @@ class Version
     @changed = @lastHash isnt @hash or DEBUG
 
   update: ->
-    if @lastUpdated < RsyncSchedule.lastSync
+    if @lastUpdated < VersionScheduler.releasedAt
       @increment()
       debug "saving version #{@number} of #{@file.base}"
 
@@ -130,7 +130,7 @@ class ManifestFile extends File
 
 if __filename is __main
   manifest = new ManifestFile [__dirname, '..', 'versions.manifest.json'].join path.sep
-  RsyncSchedule.setup manifest.json['rsync-crontab']
+  VersionScheduler.setup manifest.json['release-schedules']
 
   module = new File file
   if module.versionate()
@@ -152,7 +152,7 @@ else
     moduleVersion = moduleVersion.replace('=', '')
     alias[moduleName] = path.join __dirname, '..', 'modules/versions/' + moduleName + '-v.' + moduleVersion
 
-  moduleVersion = config.annotations.$version.split('@')[0]
+  moduleVersion = config['build-info'].$version.split('@')[0]
 
   module.exports =
     version: moduleVersion
