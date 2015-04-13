@@ -1,8 +1,6 @@
-var path            = require('path'),
-    webpack         = require('webpack'),
-    webpackVersions = require('./nosync/compile-assets.js'),
-    version         = webpackVersions.version,
-    alias           = webpackVersions.alias;
+var path    = require('path'),
+    webpack = require('webpack'),
+    config  = require('webpack-versioner')(__dirname);
 
 function contextFor(channel, externals) {
     return {
@@ -13,7 +11,7 @@ function contextFor(channel, externals) {
         },
         output: {
             path: path.join(__dirname, 'builds'),
-            filename: channel + "-v." + version + ".js",
+            filename: channel + "-v." + config.version + ".js",
             chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
         module: {
@@ -24,10 +22,9 @@ function contextFor(channel, externals) {
         },
         resolve: {
             extensions: ["", ".coffee"],
-            alias: alias
+            alias: config.alias
         },
         externals: externals,
-        resolveLoader: { root: path.join(__dirname, "nosync/node_modules") },
         plugins: [
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
