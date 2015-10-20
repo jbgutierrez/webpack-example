@@ -1,4 +1,4 @@
-# $version: 1.1@19315b
+# $version: 1.1@27eff8
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:34:02.747Z
+# $updated: 2015-10-20T19:58:13.935Z
 console.log "lookbook-configuration.coffee"

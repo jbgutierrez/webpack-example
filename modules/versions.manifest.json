@@ -1,0 +1,30 @@
+{
+  "build-info": {
+    "$author": "jbgutierrez",
+    "$updated": "2015-10-20T19:58:53.172Z",
+    "$version": "1.17@e3c63f"
+  },
+  "release-schedules": [
+    "0 0 * * *",
+    "0 14 * * 1,4"
+  ],
+  "modules": {
+    "admin-helpers": "1.1@14831d",
+    "category-page": "1.1@538750",
+    "collage-page": "1.1@2f16d1",
+    "corporative-page": "1.1@2b617a",
+    "desktop-patches": "1.1@ec9b8c",
+    "helpers": "1.1@93b424",
+    "home-page": "1.1@79c97e",
+    "layout": "1.1@ca0ec0",
+    "lookbook-collage": "1.1@98ba11",
+    "lookbook-configuration": "1.1@27eff8",
+    "lookbook-page": "1.1@e7f733",
+    "lookbook-simple": "1.1@62834c",
+    "outline": "1.1@51c6f6",
+    "product-helpers": "1.1@0c19b0",
+    "product-page": "1.1@58319e",
+    "router": "1.1@e7886b",
+    "video": "=1.0"
+  }
+}

@@ -1,6 +1,6 @@
-# $version: 1.1@a23c05
+# $version: 1.1@2b617a
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:33:53.970Z
+# $updated: 2015-10-20T19:57:55.702Z
 require 'helpers'
 console.log "corporative-page"
 

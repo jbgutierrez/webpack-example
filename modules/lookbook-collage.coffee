@@ -1,4 +1,4 @@
-# $version: 1.1@d0519f
+# $version: 1.1@98ba11
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:34:01.285Z
+# $updated: 2015-10-20T19:58:12.724Z
 console.log "lookbook-collage.coffee"

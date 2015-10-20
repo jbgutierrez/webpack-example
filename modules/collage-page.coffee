@@ -1,7 +1,7 @@
 require 'helpers'
-# $version: 1.1@67f3e2
+# $version: 1.1@2f16d1
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:33:52.497Z
+# $updated: 2015-10-20T19:57:54.542Z
 require 'lookbook-configuration'
 video = require 'video'
 console.log "lookbook-page"

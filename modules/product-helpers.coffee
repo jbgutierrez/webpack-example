@@ -1,4 +1,4 @@
-# $version: 1.1@f03f44
+# $version: 1.1@0c19b0
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:34:08.582Z
+# $updated: 2015-10-20T19:58:19.049Z
 console.log "product-helpers.coffee"

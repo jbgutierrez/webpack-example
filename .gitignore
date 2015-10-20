@@ -28,3 +28,5 @@ node_modules
 
 nosync/
 builds/
+
+modules/versions/

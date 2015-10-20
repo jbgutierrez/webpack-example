@@ -4,9 +4,9 @@ $ = require 'jquery'
 
 if ENV is "desktop"
   require.ensure [], ->
-# $version: 1.1@9fd28e
+# $version: 1.1@79c97e
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:33:58.362Z
+# $updated: 2015-10-20T19:57:59.175Z
     require 'admin-helpers'
 
 module.exports = ->

@@ -1,6 +1,6 @@
-# $version: 1.1@7c8d13
+# $version: 1.1@538750
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:33:51.037Z
+# $updated: 2015-10-20T19:57:53.363Z
 require 'helpers'
 console.log "category-page"
 

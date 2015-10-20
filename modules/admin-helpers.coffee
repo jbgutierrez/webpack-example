@@ -1,4 +1,4 @@
-# $version: 1.1@3148a5
+# $version: 1.1@14831d
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:33:49.569Z
+# $updated: 2015-10-20T19:57:52.203Z
 console.log "modules/admin-helpers.coffee"

@@ -1,6 +1,6 @@
-# $version: 1.1@0a23d0
+# $version: 1.1@58319e
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:34:10.040Z
+# $updated: 2015-10-20T19:58:51.106Z
 require 'helpers'
 require 'product-helpers'
 console.log "product-page"
