@@ -1,8 +1,9 @@
-# $version: 1.1@538750
+# $version: 1.2@f833ba
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:57:53.363Z
+# $updated: 2015-10-21T20:14:04.142Z
 require 'helpers'
 console.log "category-page"
 
-module.exports = ->
-  console.log "category-page init"
+module.exports =
+  init: ->
+    console.log "category-page init"

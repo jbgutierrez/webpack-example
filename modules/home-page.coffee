@@ -4,10 +4,11 @@ $ = require 'jquery'
 
 if ENV is "desktop"
   require.ensure [], ->
-# $version: 1.1@79c97e
+# $version: 1.2@e3a39b
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:57:59.175Z
+# $updated: 2015-10-21T20:15:08.117Z
     require 'admin-helpers'
 
-module.exports = ->
-  console.log "home-page init"
+module.exports =
+  init: ->
+    console.log "home-page init"

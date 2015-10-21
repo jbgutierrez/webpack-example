@@ -1,8 +1,9 @@
-# $version: 1.1@2b617a
+# $version: 1.2@c774b3
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:57:55.702Z
+# $updated: 2015-10-21T20:15:36.789Z
 require 'helpers'
 console.log "corporative-page"
 
-module.exports = ->
-  console.log "corporative-page init"
+module.exports =
+  init = ->
+    console.log "corporative-page init"

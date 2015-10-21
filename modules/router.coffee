@@ -1,39 +1,50 @@
-# $version: 1.1@e7886b
+# $version: 1.2@460bbb
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:58:53.163Z
-console.log "router"
+# $updated: 2015-10-21T20:28:47.298Z
+console.log 'router'
 
-route = ->
-  require 'layout'
+Router =
+  init: ->
+    @timestamp = +new Date
+    modules = [
+      'layout'
+      location.hash.substring(1) or 'home-page'
+      'outline'
+    ]
 
-  switch location.hash
-    when '#category-page'
-      require.ensure [], ->
-        setup = require 'category-page'
-        setup()
-    when '#product-page'
-      require.ensure [], ->
-        setup = require 'product-page'
-        setup()
-    when '#lookbook-page'
-      require.ensure [], ->
-        setup = require 'lookbook-page'
-        setup()
-    when '#collage-page'
-      require.ensure [], ->
-        setup = require 'collage-page'
-        setup()
-    when '#corporative-page'
-      require.ensure [], ->
-        setup = require 'corporative-page'
-        setup()
+    @load module, @timestamp for module in modules
+
+  dispose: ->
+    module.dispose?() for module in @loaded
+    @loaded = []
+  loaded: []
+  load: (module, timestamp) ->
+    if typeof module is 'string'
+      module =
+        switch module
+          when 'category-page'    then require 'category-page'
+          when 'collage-page'     then require 'collage-page'
+          when 'corporative-page' then require 'corporative-page'
+          when 'home-page'        then require 'home-page'
+          when 'layout'           then require 'layout'
+          when 'lookbook-page'    then require 'product-page'
+          when 'outline'          then require 'outline' if ENV is 'desktop'
+          when 'product-page'     then require 'product-page'
+
+          when 'lazy-page'
+            require.ensure [], =>
+              deferred = => @load (require 'lazy-page'), timestamp
+              setTimeout deferred, Math.random() * 5000
+
+    return unless module
+
+    if timestamp isnt @timestamp
+      console.log "Canceling module initialization"
     else
-      setup = require 'home-page'
-      setup()
+      @loaded.push module
+      module.init?()
 
-  if ENV is "desktop"
-    require "./outline"
-
-route()
-window.onhashchange = route
-
+Router.init()
+window.onhashchange = ->
+  Router.dispose()
+  Router.init()

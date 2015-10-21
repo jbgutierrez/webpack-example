@@ -1,6 +1,6 @@
-# $version: 1.1@58319e
+# $version: 1.2@78a30b
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:58:51.106Z
+# $updated: 2015-10-21T20:15:28.084Z
 require 'helpers'
 require 'product-helpers'
 console.log "product-page"
@@ -9,5 +9,6 @@ if ENV is "desktop"
   require.ensure [], ->
     require 'admin-helpers'
 
-module.exports = ->
-  console.log "product-page init"
+module.exports =
+  init = ->
+    console.log "product-page init"

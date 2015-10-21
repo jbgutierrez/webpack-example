@@ -1,8 +1,8 @@
 {
   "build-info": {
     "$author": "jbgutierrez",
-    "$updated": "2015-10-20T19:58:53.172Z",
-    "$version": "1.17@e3c63f"
+    "$updated": "2015-10-21T20:29:59.231Z",
+    "$version": "1.18@b633ef"
   },
   "release-schedules": [
     "0 0 * * *",
@@ -10,21 +10,22 @@
   ],
   "modules": {
     "admin-helpers": "1.1@14831d",
-    "category-page": "1.1@538750",
+    "category-page": "1.2@f833ba",
     "collage-page": "1.1@2f16d1",
-    "corporative-page": "1.1@2b617a",
+    "corporative-page": "1.2@c774b3",
     "desktop-patches": "1.1@ec9b8c",
     "helpers": "1.1@93b424",
-    "home-page": "1.1@79c97e",
+    "home-page": "1.2@e3a39b",
     "layout": "1.1@ca0ec0",
     "lookbook-collage": "1.1@98ba11",
     "lookbook-configuration": "1.1@27eff8",
-    "lookbook-page": "1.1@e7f733",
+    "lookbook-page": "1.2@cef630",
     "lookbook-simple": "1.1@62834c",
     "outline": "1.1@51c6f6",
     "product-helpers": "1.1@0c19b0",
-    "product-page": "1.1@58319e",
-    "router": "1.1@e7886b",
-    "video": "=1.0"
+    "product-page": "1.2@78a30b",
+    "router": "1.2@460bbb",
+    "video": "=1.0",
+    "lazy-page": "1.0@681b56"
   }
 }
