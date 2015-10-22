@@ -1,31 +1,28 @@
 {
   "build-info": {
     "$author": "jbgutierrez",
-    "$updated": "2015-10-21T20:29:59.231Z",
-    "$version": "1.18@b633ef"
+    "$updated": "2015-10-23T05:33:27.749Z",
+    "$version": "1.0@512869"
   },
   "release-schedules": [
     "0 0 * * *",
     "0 14 * * 1,4"
   ],
   "modules": {
-    "admin-helpers": "1.1@14831d",
-    "category-page": "1.2@f833ba",
-    "collage-page": "1.1@2f16d1",
-    "corporative-page": "1.2@c774b3",
-    "desktop-patches": "1.1@ec9b8c",
-    "helpers": "1.1@93b424",
-    "home-page": "1.2@e3a39b",
-    "layout": "1.1@ca0ec0",
-    "lookbook-collage": "1.1@98ba11",
-    "lookbook-configuration": "1.1@27eff8",
-    "lookbook-page": "1.2@cef630",
-    "lookbook-simple": "1.1@62834c",
-    "outline": "1.1@51c6f6",
-    "product-helpers": "1.1@0c19b0",
-    "product-page": "1.2@78a30b",
-    "router": "1.2@460bbb",
-    "video": "=1.0",
-    "lazy-page": "1.0@681b56"
+    "admin-helpers": "1.0@7543ab",
+    "api": "1.0@ccad13",
+    "category-configs": "1.0@cc0f7b",
+    "front-page": "1.0@cabfe2",
+    "globals": "1.0@8ed19b",
+    "helpers": "1.0@fa5c27",
+    "layout": "1.0@d0c4fd",
+    "leaker": "1.0@36e65a",
+    "leaking-page": "1.0@2c7e96",
+    "logger": "1.0@20b338",
+    "main": "1.0@c12243",
+    "marketing-page": "1.0@689590",
+    "outline": "1.0@63cb27",
+    "router": "1.0@7f3582",
+    "video": "1.0@3f231a"
   }
 }

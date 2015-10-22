@@ -1,4 +1,5 @@
-# $version: 1.1@93b424
+# $version: 1.0@fa5c27
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:57:58.017Z
-console.log "helpers.coffee"
+# $updated: 2015-10-23T05:33:15.046Z
+console = require('logger').for('helpers')
+console.log "load"

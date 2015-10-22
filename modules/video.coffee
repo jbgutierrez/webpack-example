@@ -1,7 +1,10 @@
-# $version: 1.2@007ce5
+# $version: 1.0@3f231a
 # $author: jbgutierrez
-# $updated: 2015-04-09T23:37:13.393Z
-console.log "video"
+# $updated: 2015-10-23T05:33:27.740Z
+MODULE_NAME = "video"
+console = require('logger').for(MODULE_NAME)
+console.log "load"
+
 module.exports =
   setup: ->
-    console.log "video"
+    console.log "setup"

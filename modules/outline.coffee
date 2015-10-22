@@ -1,4 +1,9 @@
-# $version: 1.1@51c6f6
+# $version: 1.0@63cb27
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:58:17.771Z
-console.log "outline.coffee"
+# $updated: 2015-10-23T05:33:25.092Z
+MODULE_NAME = "outline"
+console = require('logger').for(MODULE_NAME)
+console.log "load/init/¿eligible?"
+
+window.addEventListener 'resized', ->
+  console.log 'resized'

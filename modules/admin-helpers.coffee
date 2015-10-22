@@ -1,4 +1,6 @@
-# $version: 1.1@14831d
+# $version: 1.0@7543ab
 # $author: jbgutierrez
-# $updated: 2015-10-20T19:57:52.203Z
-console.log "modules/admin-helpers.coffee"
+# $updated: 2015-10-23T05:33:05.577Z
+MODULE_NAME = "admin-helpers"
+console = require('logger').for(MODULE_NAME)
+console.log "load"

@@ -8,11 +8,11 @@ function contextFor(channel, externals) {
         context: path.join(__dirname, 'modules'),
         name: channel,
         entry: {
-            router: './router'
+            main: './main'
         },
         output: {
             path: path.join(__dirname, 'builds'),
-            filename: channel + ".js",
+            filename: channel + "-v." + versionsManifest.version + ".js",
             chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
         module: {
@@ -28,7 +28,8 @@ function contextFor(channel, externals) {
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
               'modules'
-            ]
+            ],
+            root: './bower_components'
         },
         externals: externals,
         plugins: [
@@ -48,9 +49,9 @@ function contextFor(channel, externals) {
 
 module.exports = [
     contextFor('mobile', {
-        "jquery": "Zepto"
+        // "jquery": "Zepto"
     }),
     contextFor('desktop', {
-        "jquery": "jQuery"
+        // "jquery": "jQuery"
     })
 ]
