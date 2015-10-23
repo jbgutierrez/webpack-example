@@ -5,13 +5,15 @@ MODULE_NAME = "router"
 console = require('logger').for('router', '#dff0d8')
 console.log "load"
 configs = require 'category-configs'
+helpers = require 'helpers'
+g = require 'globals'
 
 Router =
   init: (page) ->
+    g.request++
     @dispose()
     window.gc?()
     console.log "init"
-    @timestamp = +new Date
     modules = [
       'layout'
       'outline'
@@ -21,7 +23,7 @@ Router =
 
     document.getElementById('main').style['border-color'] = '#'+Math.floor(Math.random()*16777215).toString(16)
 
-    @load module, @timestamp for module in modules
+    @load module, @request for module in modules
 
   dispose: ->
     keys = Object.keys(@loaded)
@@ -35,7 +37,7 @@ Router =
 
     @loaded = {}
   loaded: {}
-  load: (module, timestamp, moduleName=module) ->
+  load: (module, request, moduleName=module) ->
     if typeof module is 'string'
       module =
         switch module
@@ -47,7 +49,7 @@ Router =
           when 'leaking-page'
             fn = =>
               require.ensure [], =>
-                @load (require 'leaking-page'), timestamp, moduleName
+                @load (require 'leaking-page'), request, moduleName
             if @leakingPageRequested
               fn()
             else
@@ -55,7 +57,7 @@ Router =
               delay = 0
               console.log "retrieving source for #{moduleName} in #{delay}ms"
               console.log "please, throattle your connection with Chrome Tools"
-              setTimeout ->
+              helpers.setTimeout ->
                 console.log "receiving source for #{moduleName}"
                 fn()
               , delay

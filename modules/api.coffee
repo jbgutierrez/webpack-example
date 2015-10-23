@@ -4,6 +4,8 @@
 console = require('logger').for('api')
 console.log "load"
 
+helpers = require 'helpers'
+
 module.exports =
   request: 0
   ajax: (success) ->
@@ -12,4 +14,4 @@ module.exports =
     fn = ->
       console.log "receiving req: #{request}"
       success()
-    setTimeout fn, 1000
+    helpers.setTimeout fn, 1000
