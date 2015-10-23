@@ -7,29 +7,14 @@ console.log "load"
 
 main = document.getElementById 'main'
 
-createString = ->
-  new Array(1e6).join('x')
-
 class ScatteredObject
   initialize: (@name) ->
 
-createNodes = ->
-  i = 100
-  fragment = document.createDocumentFragment()
-  while i > 0
-    div = document.createElement('div')
-    textNode = document.createTextNode(i + ' - ' + (new Date).toTimeString())
-    div.appendChild textNode
-    fragment.appendChild div
-    i--
-  fragment
-
-createClosure = ->
-  largeString = createString()
-  -> largeString
-
+uuid = 0
 class Leaker
-  constructor: (@js=true, @dom = true) ->
+  constructor: (@js=true, @dom=true) ->
+    @name = new Array(1e7).join('x')
+    @id = "leaker##{uuid++}"
     @leaks = []
   leak: (item) ->
     if @js
@@ -39,13 +24,29 @@ class Leaker
       main.addEventListener 'click', item if typeof item is 'function'
       main.appendChild item if item.tagName
 
-  createClosure: ->
-    @leak createClosure()
+  createClosures: ->
+    amount = 1e4
+    while amount > 0
+      @leak -> "#{@id} - #{amount}"
+      amount--
 
   createNodes: ->
-    @leak createNodes()
+    amount = i = 1e4
+    fragment = document.createDocumentFragment()
+    while i > 0
+      div = document.createElement('div')
+      textNode = document.createTextNode 'ghost'
+      div.appendChild textNode
+      div.style.display = 'none'
+      @leak div
+      i--
+    div.style.display = 'block'
+    div.innerHTML = "#{@id} - #{amount} nodes"
 
-  createObject: ->
-    @leak new ScatteredObject createString()
+  createObjects: ->
+    amount = 1e5
+    while amount > 0
+      @leak new ScatteredObject amount
+      amount--
 
 module.exports = Leaker

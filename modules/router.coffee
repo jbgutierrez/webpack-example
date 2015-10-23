@@ -52,8 +52,9 @@ Router =
               fn()
             else
               @leakingPageRequested = true
-              delay = 4000
+              delay = 0
               console.log "retrieving source for #{moduleName} in #{delay}ms"
+              console.log "please, throattle your connection with Chrome Tools"
               setTimeout ->
                 console.log "receiving source for #{moduleName}"
                 fn()
