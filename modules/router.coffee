@@ -12,6 +12,7 @@ Router =
   init: (page) ->
     g.request++
     @dispose()
+    helpers.disposeFns()
     window.gc?()
     console.log "init"
     modules = [

@@ -16,6 +16,7 @@ class Leaker
     @name = new Array(1e7).join('x')
     @id = "leaker##{uuid++}"
     @leaks = []
+
   leak: (item) ->
     if @js
       @leaks.push item
@@ -27,7 +28,7 @@ class Leaker
   createClosures: ->
     amount = 1e4
     while amount > 0
-      @leak -> "#{@id} - #{amount}"
+      @leak ((_) -> -> _) "#{@id} - #{amount} - #{name}"
       amount--
 
   createNodes: ->

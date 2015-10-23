@@ -24,8 +24,10 @@ module.exports =
     """
 
     leaker = new Leaker
-    dd = new Delegate main
-    dd.on 'click', '[data-leaker-method]', ->
+    @dd = new Delegate main
+    @dd.on 'click', '[data-leaker-method]', helpers.proxy ->
       method = @attributes['data-leaker-method'].value
       console.log @innerHTML
       leaker[method]()
+  dispose: ->
+    @dd = null

@@ -11,12 +11,21 @@ module.exports =
     div.innerHTML = html
     for node in div.childNodes when node
       parent.appendChild node
-
   setTimeout: (fn, delay) ->
+    proxied = @proxy(fn, null, false)
+    setTimeout proxied, delay
+  fns: []
+  proxy: (fn, name="unnamed", disposable=true) ->
     request = g.request
-    wrapped = ->
+    proxied = (args...) ->
       if request is g.request
-        fn()
+        fn.apply this, args...
       else
-        console.error "cancelling callback"
-    setTimeout wrapped, delay
+        console.error "canceling callback (request-#{request} [#{name}])" unless disposable
+        fn = null
+    @fns.push proxied if disposable
+    proxied
+  disposeFns: ->
+    return unless length = @fns.length
+    console.log "removing proxied functions (total: #{length})"
+    fn() while fn = @fns.pop()
