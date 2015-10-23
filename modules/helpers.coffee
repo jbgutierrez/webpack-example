@@ -4,6 +4,9 @@
 console = require('logger').for('helpers')
 console.log "load"
 g = require 'globals'
+Delegate = require('dom-delegate/lib/delegate.js')
+
+main = document.getElementById 'main'
 
 module.exports =
   appendTo: (parent, html) ->
@@ -11,11 +14,14 @@ module.exports =
     div.innerHTML = html
     for node in div.childNodes when node
       parent.appendChild node
-  setTimeout: (fn, delay) ->
-    proxied = @proxy(fn, null, false)
-    setTimeout proxied, delay
   fns: []
-  proxy: (fn, name="unnamed", disposable=true) ->
+  # .on(eventType[, selector], handler[, useCapture])
+  on: (args...) ->
+    if typeof (handler = args[idx = 1]) isnt 'function'
+      handler = args[idx = 2]
+    args[idx] = @proxy 'event', handler
+    @delegate.on args...
+  proxy: (name="unnamed", fn, disposable=true) ->
     request = g.request
     proxied = (args...) ->
       if request is g.request
@@ -26,6 +32,8 @@ module.exports =
     @fns.push proxied if disposable
     proxied
   disposeFns: ->
+    @delegate?.destroy()
+    @delegate = new Delegate main
     return unless length = @fns.length
     console.log "removing proxied functions (total: #{length})"
     fn() while fn = @fns.pop()

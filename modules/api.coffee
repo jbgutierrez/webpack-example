@@ -9,9 +9,9 @@ helpers = require 'helpers'
 module.exports =
   request: 0
   ajax: (success) ->
-    request = @request++
-    console.log "requesting req: #{request}"
-    fn = ->
-      console.log "receiving req: #{request}"
+    request = "ajax-#{@request++}"
+    console.log "#{request} requesting ..."
+    proxied = helpers.proxy request, ->
+      console.log "#{request} receiving ..."
       success()
-    helpers.setTimeout fn, 1000
+    setTimeout proxied, 1000

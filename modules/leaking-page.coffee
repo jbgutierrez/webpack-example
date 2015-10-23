@@ -7,9 +7,6 @@ console = require('logger').for(MODULE_NAME)
 console.log "load"
 helpers = require 'helpers'
 Leaker = require 'leaker'
-Delegate = require('dom-delegate/lib/delegate.js')
-
-main = document.getElementById 'main'
 
 module.exports =
   init: ->
@@ -24,10 +21,7 @@ module.exports =
     """
 
     leaker = new Leaker
-    @dd = new Delegate main
-    @dd.on 'click', '[data-leaker-method]', helpers.proxy ->
+    helpers.on 'click', '[data-leaker-method]', ->
       method = @attributes['data-leaker-method'].value
       console.log @innerHTML
       leaker[method]()
-  dispose: ->
-    @dd = null

@@ -5,7 +5,7 @@ MODULE_NAME = "leaker"
 console = require('logger').for(MODULE_NAME)
 console.log "load"
 
-main = document.getElementById 'main'
+helpers = require 'helpers'
 
 class ScatteredObject
   initialize: (@name) ->
@@ -22,7 +22,7 @@ class Leaker
       @leaks.push item
 
     if @dom
-      main.addEventListener 'click', item if typeof item is 'function'
+      helpers.on 'click', item if typeof item is 'function'
       main.appendChild item if item.tagName
 
   createClosures: ->

@@ -58,10 +58,10 @@ Router =
               delay = 0
               console.log "retrieving source for #{moduleName} in #{delay}ms"
               console.log "please, throattle your connection with Chrome Tools"
-              helpers.setTimeout ->
+              proxied = helpers.proxy 'loading source', ->
                 console.log "receiving source for #{moduleName}"
                 fn()
-              , delay
+              setTimeout proxied, delay
 
     return unless module and module.init
 
