@@ -1,7 +1,8 @@
 var path    = require('path'),
     webpack = require('webpack'),
     webpackVersioner = require('webpack-versioner'),
-    versionsManifest = webpackVersioner.parseManifest('modules/versions.manifest.json');
+    versionsManifest = webpackVersioner.parseManifest('modules/versions.manifest.json'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 function contextFor(channel, externals) {
     return {
@@ -18,12 +19,15 @@ function contextFor(channel, externals) {
         module: {
             loaders: [
                 { test: /\.coffee$/, loader: 'coffee-loader' },
-                { test: /\.json$/, loader: 'json-loader' }
+                { test: /\.json$/, loader: 'json-loader' },
+                { test: /\.scss/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") }
             ]
+        },
+        sassLoader: {
+            includePaths: [path.resolve(__dirname, "./node_modules/compass-mixins/lib")]
         },
         resolve: {
             extensions: ["", ".coffee"],
-            alias: versionsManifest.alias,
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
@@ -33,6 +37,7 @@ function contextFor(channel, externals) {
         },
         externals: externals,
         plugins: [
+            new ExtractTextPlugin(channel + "-v." + versionsManifest.version + ".css"),
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
                 minChunks: function(module, count){

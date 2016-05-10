@@ -11,6 +11,8 @@ api = require 'api'
 helpers = require 'helpers'
 video = require 'video'
 
+require 'marketing-page.scss'
+
 if helpers.adminMode
   require.ensure [], ->
     require 'admin-helpers'

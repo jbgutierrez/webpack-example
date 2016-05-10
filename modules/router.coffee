@@ -22,6 +22,7 @@ Router =
     ]
     window.gc?()
 
+    document.documentElement.id = page
     document.getElementById('main').style['border-color'] = '#'+Math.floor(Math.random()*16777215).toString(16)
 
     @load module, @request for module in modules

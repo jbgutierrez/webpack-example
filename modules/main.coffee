@@ -5,6 +5,8 @@ require 'globals'
 console = require('logger')
 console.log "load"
 
+require 'main.scss'
+
 Router = require 'router'
 
 title   = document.getElementById 'title'
