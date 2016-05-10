@@ -1,6 +1,3 @@
-# $version: 1.0@7f3582
-# $author: jbgutierrez
-# $updated: 2015-10-23T05:33:26.417Z
 MODULE_NAME = "router"
 console = require('logger').for('router', '#dff0d8')
 console.log "load"

@@ -1,6 +1,3 @@
-# $version: 1.0@c12243
-# $author: jbgutierrez
-# $updated: 2015-10-23T05:33:22.550Z
 require 'globals'
 console = require('logger')
 console.log "load"

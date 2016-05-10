@@ -1,6 +1,3 @@
-# $version: 1.0@36e65a
-# $author: jbgutierrez
-# $updated: 2015-10-23T05:33:17.553Z
 MODULE_NAME = "leaker"
 console = require('logger').for(MODULE_NAME)
 console.log "load"

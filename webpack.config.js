@@ -28,6 +28,7 @@ function contextFor(channel, externals) {
         },
         resolve: {
             extensions: ["", ".coffee"],
+            alias: versionsManifest.alias,
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:

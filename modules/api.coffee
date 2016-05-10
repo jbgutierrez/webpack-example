@@ -1,6 +1,3 @@
-# $version: 1.0@ccad13
-# $author: jbgutierrez
-# $updated: 2015-10-23T05:33:06.889Z
 console = require('logger').for('api')
 console.log "load"
 

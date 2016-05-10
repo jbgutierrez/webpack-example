@@ -1,28 +1,88 @@
 {
   "build-info": {
     "$author": "jbgutierrez",
-    "$updated": "2015-10-23T05:33:27.749Z",
-    "$version": "1.0@512869"
+    "$updated": "2016-05-10T22:55:48.306Z",
+    "$version": "1.0@92e419"
   },
   "release-schedules": [
     "0 0 * * *",
     "0 14 * * 1,4"
   ],
   "modules": {
-    "admin-helpers": "1.0@7543ab",
-    "api": "1.0@ccad13",
-    "category-configs": "1.0@cc0f7b",
-    "front-page": "1.0@cabfe2",
-    "globals": "1.0@8ed19b",
-    "helpers": "1.0@fa5c27",
-    "layout": "1.0@d0c4fd",
-    "leaker": "1.0@36e65a",
-    "leaking-page": "1.0@2c7e96",
-    "logger": "1.0@20b338",
-    "main": "1.0@c12243",
-    "marketing-page": "1.0@689590",
-    "outline": "1.0@63cb27",
-    "router": "1.0@7f3582",
-    "video": "1.0@3f231a"
+    "api": {
+      "version": "1.0@68ad54",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:35.816Z"
+    },
+    "admin-helpers": {
+      "version": "1.0@7543ab",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:43.115Z"
+    },
+    "category-configs": {
+      "version": "1.0@cc0f7b",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:43.625Z"
+    },
+    "front-page": {
+      "version": "1.0@cabfe2",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:43.867Z"
+    },
+    "globals": {
+      "version": "1.0@69a088",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:44.120Z"
+    },
+    "helpers": {
+      "version": "1.0@8785e5",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:44.372Z"
+    },
+    "layout": {
+      "version": "1.0@d0c4fd",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:44.632Z"
+    },
+    "leaker": {
+      "version": "1.0@726a9a",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:44.878Z"
+    },
+    "leaking-page": {
+      "version": "1.0@171cb1",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:45.139Z"
+    },
+    "logger": {
+      "version": "1.0@20b338",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:45.389Z"
+    },
+    "main": {
+      "version": "1.0@0bf890",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:45.905Z"
+    },
+    "marketing-page": {
+      "version": "1.0@142892",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:46.464Z"
+    },
+    "outline": {
+      "version": "1.0@86c10f",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:46.998Z"
+    },
+    "router": {
+      "version": "1.0@2471d3",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:47.267Z"
+    },
+    "video": {
+      "version": "1.0@a9ffb0",
+      "author": "jbgutierrez",
+      "updated": "2016-05-10T22:55:48.306Z"
+    }
   }
 }

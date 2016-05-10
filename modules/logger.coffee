@@ -1,7 +1,3 @@
-# $version: 1.0@20b338
-# $author: jbgutierrez
-# $updated: 2015-10-23T05:33:20.112Z
-
 main = document.getElementById 'main'
 log = (name, msg, bg) ->
   msg = "#{name}: #{msg}"
