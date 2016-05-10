@@ -1,3 +1,4 @@
+# graph-cluster: entry
 MODULE_NAME = "leaking-page"
 console = require('logger').for(MODULE_NAME)
 console.log "load"
