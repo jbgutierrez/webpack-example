@@ -6,7 +6,7 @@ console.log "load"
 api = require 'api'
 
 helpers = require 'helpers'
-video = require 'video'
+{ Video } = require 'video.es6'
 
 require 'marketing-page.scss'
 
@@ -20,5 +20,6 @@ module.exports =
 
     api.ajax ->
 
-      video.setup()
+      video = new Video "video.mp4"
+      video.play()
       console.log "... rendering content"
