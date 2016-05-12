@@ -44,6 +44,7 @@ Router =
           when 'outline'          then require 'outline' if ENV is 'desktop'
           when 'front-page'       then require 'front-page'
           when 'marketing-page'   then require 'marketing-page'
+          when 'video-page'       then require 'video-page'
 
           when 'leaking-page'
             fn = =>
@@ -60,6 +61,8 @@ Router =
                 console.log "receiving source for #{moduleName}"
                 fn()
               setTimeout proxied, delay
+          else
+            throw "Module #{moduleName} not found"
 
     return unless module and module.init
 

@@ -1,5 +1,2 @@
-$red: #f00;
-
-.video-controls {
-  background: $red;
-}
+$icon-font-path: "~/fonts" !default;
+@import "~videojs/src/css/video-js";
