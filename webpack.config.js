@@ -1,5 +1,6 @@
 var path    = require('path'),
     webpack = require('webpack'),
+    LiveReloadPlugin = require('webpack-livereload-plugin'),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 function contextFor(channel, externals) {
@@ -47,6 +48,9 @@ function contextFor(channel, externals) {
             }),
             new webpack.DefinePlugin({
                 ENV: JSON.stringify(channel)
+            }),
+            new LiveReloadPlugin({
+                appendScriptTag:true
             })
         ]
     }
