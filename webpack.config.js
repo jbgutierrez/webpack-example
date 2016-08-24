@@ -1,19 +1,17 @@
 var path    = require('path'),
     webpack = require('webpack'),
-    webpackVersioner = require('webpack-versioner'),
-    versionsManifest = webpackVersioner.parseManifest('modules/versions.manifest.json'),
     ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 function contextFor(channel, externals) {
     return {
-        context: path.join(__dirname, 'modules'),
+        context: path.join(__dirname, 'js'),
         name: channel,
         entry: {
             main: './main'
         },
         output: {
             path: path.join(__dirname, 'builds'),
-            filename: channel + "-v." + versionsManifest.version + ".js",
+            filename: channel + ".js",
             chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
         module: {
@@ -29,17 +27,17 @@ function contextFor(channel, externals) {
         },
         resolve: {
             extensions: ["", ".coffee", ".es6"],
-            alias: versionsManifest.alias,
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
-              'modules'
+              'js',
+              'css'
             ],
             root: './bower_components'
         },
         externals: externals,
         plugins: [
-            new ExtractTextPlugin(channel + "-v." + versionsManifest.version + ".css"),
+            new ExtractTextPlugin(channel + ".css"),
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
                 minChunks: function(module, count){

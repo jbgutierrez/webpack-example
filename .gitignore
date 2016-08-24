@@ -29,4 +29,5 @@ node_modules
 nosync/
 builds/
 
-modules/versions/
+js/versions/
+css/versions/
