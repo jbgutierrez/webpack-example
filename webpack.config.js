@@ -15,6 +15,11 @@ function contextFor(channel, externals) {
             filename: channel + ".js",
             chunkFilename: path.join("chunks", channel + ".[chunkhash].chunk.js")
         },
+        devServer: {
+            host: '0.0.0.0',
+            port: 8081,
+            publicPath: "/"
+        },
         module: {
             loaders: [
                 { test: /\.html$/, loader: 'html' },
