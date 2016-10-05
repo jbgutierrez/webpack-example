@@ -17,17 +17,20 @@ function contextFor(channel, externals) {
         },
         module: {
             loaders: [
+                { test: /\.html$/, loader: 'html' },
                 { test: /\.coffee$/, loader: 'coffee-loader' },
                 { test: /\.json$/, loader: 'json-loader' },
                 { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") },
-                { test: /\.es6$/, loader: 'babel', query: { presets: ['es2015'] } }
+                { test: /\.css$/, loaders: ['style', 'css'] },
+                { test: /\.es6$/, loader: 'babel', query: { presets: ['es2015'] } },
+                { test: /\.(png|jpg|jpeg|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader : 'file-loader' }
             ]
         },
         sassLoader: {
             includePaths: [path.resolve(__dirname, "./node_modules/compass-mixins/lib")]
         },
         resolve: {
-            extensions: ["", ".coffee", ".es6"],
+            extensions: ["", ".coffee", ".es6", ".json"],
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
