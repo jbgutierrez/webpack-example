@@ -4,22 +4,25 @@ console = require('logger').for(MODULE_NAME)
 console.log "load"
 
 api = require 'api'
+g = require 'globals'
 
 helpers = require 'helpers'
-{ Video } = require 'video.es6'
 
 require 'marketing-page.scss'
 
 if helpers.adminMode
+  require.ensure [], -> require 'admin-helpers'
+
+render = ->
   require.ensure [], ->
-    require 'admin-helpers'
+    version = if g.request is 1 then "version1" else "version2"
+    # require.ensure [], -> require 'marketing-page/version1'
+    # require.ensure [], -> require 'marketing-page/version2'
+    data = require "./marketing-page/#{version}.coffee"
+    console.log "... rendering content #{data.name}"
+    data.init?()
 
 module.exports =
   init: ->
     console.log "init"
-
-    api.ajax ->
-
-      video = new Video "video.mp4"
-      video.play()
-      console.log "... rendering content"
+    api.ajax render

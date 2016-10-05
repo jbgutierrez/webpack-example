@@ -1,3 +1,6 @@
+if window.location.hostname is 'localhost'
+  __webpack_require__.p = "/"
+
 MODULE_NAME = "router"
 console = require('logger').for('router', '#dff0d8')
 console.log "load"

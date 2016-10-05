@@ -50,8 +50,7 @@ function contextFor(channel, externals) {
             new webpack.optimize.CommonsChunkPlugin({
                 children: true,
                 minChunks: function(module, count){
-                    return (count > 2 && module.size() < 128) ||
-                            ~module._source._value.indexOf('promote: true');
+                    return (count > 2 && module.size() < 128) || module._source && ~module._source._value.indexOf('promote: true');
                 }
             }),
             new webpack.DefinePlugin({
