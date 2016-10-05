@@ -1,3 +1,6 @@
+##
+# graph-cluster-name: core
+##
 console = require('logger').for('api')
 console.log "load"
 

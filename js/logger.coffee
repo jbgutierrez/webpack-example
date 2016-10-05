@@ -1,3 +1,6 @@
+##
+# graph-cluster-name: core
+##
 main = document.getElementById 'main'
 log = (name, msg, bg) ->
   msg = "#{name}: #{msg}"

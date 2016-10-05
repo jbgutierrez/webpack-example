@@ -1,3 +1,6 @@
+##
+# graph-cluster-name: core
+##
 require 'globals'
 console = require('logger')
 console.log "load"

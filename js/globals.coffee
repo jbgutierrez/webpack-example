@@ -1,3 +1,6 @@
+##
+# graph-cluster-name: core
+##
 MODULE_NAME = "globals"
 console = require('logger').for(MODULE_NAME)
 console.log "load"

@@ -1,4 +1,6 @@
-# graph-cluster: entry
+##
+# graph-cluster-name: dynamic-entry
+##
 MODULE_NAME = "marketing-page"
 console = require('logger').for(MODULE_NAME)
 console.log "load"
