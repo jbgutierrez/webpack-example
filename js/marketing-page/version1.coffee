@@ -5,6 +5,7 @@ console.log "load"
 
 module.exports =
   name: 'version one'
+  style: require 'marketing-page/version1.useable.scss'
   init: ->
     video = new Video "video.mp4"
     video.play()

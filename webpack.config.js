@@ -25,8 +25,8 @@ function contextFor(channel, externals) {
                 { test: /\.html$/, loader: 'html' },
                 { test: /\.coffee$/, loader: 'coffee-loader' },
                 { test: /\.json$/, loader: 'json-loader' },
-                { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader") },
-                { test: /\.css$/, loaders: ['style', 'css'] },
+                { test: /\.scss$/, loader: ExtractTextPlugin.extract("style-loader", "css!sass"), exclude: /\.useable\.scss$/ },
+                { test: /\.useable\.scss$/, loader: ExtractTextPlugin.extract("style/useable", "css!sass") },
                 { test: /\.es6$/, loader: 'babel', query: { presets: ['es2015'] } },
                 { test: /\.(png|jpg|jpeg|gif|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/, loader : 'file-loader' }
             ]
