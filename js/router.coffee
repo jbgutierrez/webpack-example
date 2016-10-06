@@ -33,7 +33,7 @@ Router =
     keys = Object.keys(@loaded)
     return unless keys.length
     console.warn "requesting disposal #{keys}"
-    for moduleName, module in @loaded
+    for moduleName, module of @loaded
       if module.dispose
         module.dispose()
       else
