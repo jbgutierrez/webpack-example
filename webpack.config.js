@@ -39,6 +39,7 @@ function contextFor(channel, externals) {
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
+              'versions',
               'js',
               'css'
             ],
@@ -47,17 +48,12 @@ function contextFor(channel, externals) {
         externals: externals,
         plugins: [
             new ExtractTextPlugin(channel + ".css"),
-            new webpack.optimize.CommonsChunkPlugin({
-                children: true,
-                minChunks: function(module, count){
-                    return (count > 2 && module.size() < 128) || module._source && ~module._source._value.indexOf('promote: true');
-                }
-            }),
             new webpack.DefinePlugin({
                 ENV: JSON.stringify(channel)
             }),
             new LiveReloadPlugin({
-                appendScriptTag:true
+                appendScriptTag: true,
+                port: 35731
             })
         ]
     }

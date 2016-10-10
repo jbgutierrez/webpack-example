@@ -1,5 +1,5 @@
 ##
-# graph-cluster-name: static-entry
+# graph-cluster-name: entry-point
 ##
 MODULE_NAME = "leaking-page"
 console = require('logger').for(MODULE_NAME)

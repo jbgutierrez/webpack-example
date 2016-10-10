@@ -1,3 +1,6 @@
+##
+# graph-cluster-name: versions
+##
 MODULE_NAME = "version1"
 console = require('logger').for(MODULE_NAME)
 console.log "load"

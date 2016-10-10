@@ -28,7 +28,6 @@ navigate = (delay) ->
     console.log "... receiving data for #{page}"
     title.innerText = document.title = page
     Router.init page
-    console.log "... showing #{page}"
     show main
 
   setTimeout success, 500
