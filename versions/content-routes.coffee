@@ -1,6 +1,9 @@
 ##
-# graph-cluster-name: versions
+# graph-cluster-name: entry-point-versions
 ##
+# Ex:
+# require.ensure [], -> require 'marketing-page/version1'
+# require.ensure [], -> require 'marketing-page/version2'
 module.exports =
   'marketing-page-v1': [
     {

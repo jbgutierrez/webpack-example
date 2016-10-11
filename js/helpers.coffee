@@ -21,11 +21,11 @@ module.exports =
       handler = args[idx = 2]
     args[idx] = @proxy 'event', handler
     @delegate.on args...
-  proxy: (name="unnamed", fn, disposable=true) ->
+  proxy: (name, fn, disposable=true) ->
     request = g.request
     proxied = (args...) ->
       if request is g.request
-        fn.apply this, args...
+        fn.apply this, args
       else
         console.error "canceling callback (request-#{request} [#{name}])" unless disposable
         fn = null

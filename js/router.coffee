@@ -9,82 +9,52 @@ console = require('logger').for('router', '#dff0d8')
 console.log "load"
 helpers = require 'helpers'
 g = require 'globals'
-pageConfigs = require 'config'
+routes = require 'routes'
+contents = require 'content-routes'
 
 Router =
-  init: (page) ->
+  route: (page) ->
     g.request++
-    request = g.request
     @dispose()
     helpers.disposeFns()
     window.gc?()
-    console.log "init"
-    modules = [
-      'layout'
-    ]
-    modules = modules.concat [
-      'outline'
-    ] if ENV is 'desktop'
-    window.gc?()
+    console.log "route"
 
     document.documentElement.id = page
     document.getElementById('main').style['border-color'] = '#'+Math.floor(Math.random()*16777215).toString(16)
 
-    @require module, request for module in modules
-
-    pageConfig = pageConfigs[page] or [ module: page ]
-    loadConfigurable = (config) => 
-      if config.version
-        lazy = require "bundle!../versions/#{config.module}/#{config.version}.coffee"
-        # Ex:
-        # require.ensure [], -> require 'marketing-page/version1'
-        # require.ensure [], -> require 'marketing-page/version2'
-        lazy (data) => @require config.module, request, data
+    for module, route of routes
+      load = route.test
+      load = load(page) if typeof load is 'function'
+      @load module if load
+    @load content.module, content.version for content in contents[page] or []
+  initiated: {}
+  load: (moduleName, config) ->
+    if typeof config is 'string'
+      lazy = require "bundle!../versions/#{moduleName}/#{config}.coffee"
+      lazy helpers.proxy "retrieving #{moduleName} version #{config}", (config) =>
+        @load moduleName, config
+    else
+      load = routes[moduleName].load
+      if load.length # a function with arity will be expected to callback when ready
+        load helpers.proxy "retrieving #{moduleName}", (module) =>
+          @init moduleName, config, module
       else
-        @require config.module, request
+        @init moduleName, config, load()
 
-    loadConfigurable config for config in pageConfig
-
+  init: (moduleName, config, module) ->
+    return unless module and module.init
+    @initiated[moduleName] = module
+    module.init config
   dispose: ->
-    keys = Object.keys(@loaded)
+    keys = Object.keys(@initiated)
     return unless keys.length
     console.warn "requesting disposal #{keys}"
-    for moduleName, module of @loaded
+    for moduleName, module of @initiated
       if module.dispose
         module.dispose()
       else
         console.error "#{moduleName} not disposable"
-
-    @loaded = {}
-  loaded: {}
-  require: (moduleName, request, config) ->
-    load = (module) => @load moduleName, request, config, module
-    module = switch moduleName
-      when 'marketing-page'   then load require 'marketing-page'
-      when 'layout'           then load require 'layout'
-      when 'outline'          then load require 'outline'
-      when 'front-page'       then load require 'front-page'
-      when 'leaking-page'
-        fn = => require.ensure [], => load require 'leaking-page'
-
-        if @leakingPageRequested
-          fn()
-        else
-          @leakingPageRequested = true
-          delay = 4000
-          console.log "retrieving source for #{moduleName} in #{delay}ms"
-          console.log "please, throattle your connection with Chrome Tools"
-          proxied = ->
-            console.log "receiving source for #{moduleName}"
-            fn()
-          setTimeout proxied, delay
-
-  load: (moduleName, request, config, module) ->
-    return unless module and module.init
-    if request isnt g.request
-      console.error "canceling #{moduleName} initialization"
-    else
-      @loaded[moduleName] = module
-      module.init config
+    @initiated = {}
 
 module.exports = Router
