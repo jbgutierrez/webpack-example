@@ -10,7 +10,7 @@ console.log "load"
 helpers = require 'helpers'
 g = require 'globals'
 routes = require 'routes'
-contents = require 'content-routes'
+configs = require 'config'
 
 Router =
   route: (page) ->
@@ -25,29 +25,24 @@ Router =
 
     for module, route of routes
       load = route.test
-      load = load(page) if typeof load is 'function'
+      load = load page if typeof load is 'function'
       @load module if load
-    @load content.module, content.version for content in contents[page] or []
+    @load config.module, config for config in configs[page] or []
   initiated: {}
   load: (moduleName, config) ->
-    if typeof config is 'string'
-      lazy = require "bundle!../versions/#{moduleName}/#{config}.coffee"
-      lazy helpers.proxy "retrieving #{moduleName} version #{config}", (config) =>
-        @load moduleName, config
+    load = routes[moduleName].load
+    if load.length # a function with arity will be expected to callback when ready
+      load helpers.proxy "retrieving #{moduleName}", (module) =>
+        @init moduleName, config, module
     else
-      load = routes[moduleName].load
-      if load.length # a function with arity will be expected to callback when ready
-        load helpers.proxy "retrieving #{moduleName}", (module) =>
-          @init moduleName, config, module
-      else
-        @init moduleName, config, load()
+      @init moduleName, config, load()
 
   init: (moduleName, config, module) ->
     return unless module and module.init
     @initiated[moduleName] = module
     module.init config
   dispose: ->
-    keys = Object.keys(@initiated)
+    keys = Object.keys @initiated
     return unless keys.length
     console.warn "requesting disposal #{keys}"
     for moduleName, module of @initiated

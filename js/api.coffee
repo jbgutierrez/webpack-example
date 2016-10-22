@@ -13,5 +13,5 @@ module.exports =
     console.log "#{request} requesting ..."
     proxied = helpers.proxy request, ->
       console.log "#{request} receiving ..."
-      success()
-    setTimeout proxied, 1000
+      success "#{request} #{new Date}"
+    setTimeout proxied, Math.random() * 1000

@@ -11,9 +11,9 @@ module.exports =
   'front-page':
     test: (page) -> page is 'front-page'
     load: -> require 'front-page'
-  'marketing-page':
+  'collage-page':
     test: false
-    load: -> require 'marketing-page'
+    load: -> require 'collage-page'
   'leaking-page':
     test: (page) -> page is 'leaking-page'
     load: (callback) ->

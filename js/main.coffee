@@ -18,7 +18,7 @@ hide = (el) -> el.style.display = 'none'
 
 navigate = (delay) ->
   show spinner
-  page = location.hash.substring(1) || 'marketing-page'
+  page = location.hash.substring(1) || 'collage-page'
   console.log "... requesting #{page}"
 
   success = ->

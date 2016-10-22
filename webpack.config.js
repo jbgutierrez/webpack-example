@@ -39,7 +39,7 @@ function contextFor(channel, externals) {
             modulesDirectories: [
               // It will allow to use path without leading `./` in require
               // for directories placed in `app`:
-              'versions',
+              'contents',
               'js',
               'css'
             ],
