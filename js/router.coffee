@@ -15,6 +15,7 @@ configs = require 'config'
 Router =
   route: (page) ->
     g.request++
+    document.getElementById('req-count').innerHTML = g.request
     @dispose()
     helpers.disposeFns()
     window.gc?()
