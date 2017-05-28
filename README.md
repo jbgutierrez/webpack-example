@@ -1,5 +1,3 @@
-# webpack-versioner-example
-webpack-versioner example
+# webpack-example
 
-
-![Dependecy graph](https://raw.githubusercontent.com/jbgutierrez/webpack-versioner-example/master/examples/desktop.png)
+![Dependecy graph](https://raw.githubusercontent.com/jbgutierrez/webpack-example/master/examples/desktop.png)
