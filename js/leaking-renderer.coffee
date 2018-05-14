@@ -1,17 +1,19 @@
 ##
 # graph-cluster-name: entry-point
 ##
-MODULE_NAME = "leaking-page"
+MODULE_NAME = 'leaking-renderer'
 console = require('logger').for(MODULE_NAME)
-console.log "load"
-helpers = require 'helpers'
+proxy = require 'proxy'
+dom = require 'dom'
 Leaker = require 'leaker'
+
+console.log 'load'
 
 module.exports =
   init: ->
     console.log "init"
 
-    helpers.appendTo main, """
+    dom.appendTo main, """
       <div style="position: absolute; left: 0; top: 0">
         <button data-leaker-method='createObjects'>leak scattered objects</button>
         <button data-leaker-method='createNodes'>leak nodes</button>
@@ -20,7 +22,7 @@ module.exports =
     """
 
     leaker = new Leaker
-    helpers.on 'click', '[data-leaker-method]', ->
+    proxy.on 'click', '[data-leaker-method]', ->
       method = @attributes['data-leaker-method'].value
       console.log @innerHTML
       leaker[method]()

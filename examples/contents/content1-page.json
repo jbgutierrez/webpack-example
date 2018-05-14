@@ -1,0 +1,5 @@
+{
+  "module": "collage-renderer",
+  "enhacements": "content1",
+  "data": true
+}

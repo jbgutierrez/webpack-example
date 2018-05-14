@@ -1,8 +1,12 @@
+/*
+# graph-cluster-name: core
+*/
 /* jshint esversion: 6 */
-require("video.scss");
-const console = require('logger').for("video");
+const MODULE_NAME = 'video'
+const console = require('logger').for(MODULE_NAME);
 console.log("load");
 
+require("video.scss");
 export class Video {
     constructor(name) {
         this.name = name;

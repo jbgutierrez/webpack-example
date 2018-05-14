@@ -1,19 +1,15 @@
 ##
 # graph-cluster-name: core
 ##
-console = require('logger').for('helpers')
-console.log "load"
+MODULE_NAME = 'proxy'
+console = require('logger').for(MODULE_NAME)
 g = require 'globals'
 Delegate = require('dom-delegate/lib/delegate.js')
 
+console.log 'load'
 main = document.getElementById 'main'
 
 module.exports =
-  appendTo: (parent, html) ->
-    div = document.createElement 'div'
-    div.innerHTML = html
-    for node in div.childNodes when node
-      parent.appendChild node
   fns: []
   # .on(eventType[, selector], handler[, useCapture])
   on: (args...) ->

@@ -1,8 +1,8 @@
-MODULE_NAME = "leaker"
+MODULE_NAME = 'leaker'
 console = require('logger').for(MODULE_NAME)
-console.log "load"
+proxy = require 'proxy'
 
-helpers = require 'helpers'
+console.log 'load'
 
 class ScatteredObject
   initialize: (@name) ->
@@ -19,7 +19,7 @@ class Leaker
       @leaks.push item
 
     if @dom
-      helpers.on 'click', item if typeof item is 'function'
+      proxy.on 'click', item if typeof item is 'function'
       main.appendChild item if item.tagName
 
   createClosures: ->

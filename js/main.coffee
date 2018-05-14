@@ -3,34 +3,10 @@
 ##
 require 'globals'
 console = require('logger')
+mapper = require 'mapper'
+
 console.log "load"
 
 require 'main.scss'
-
-Router = require 'router'
-
-title   = document.getElementById 'title'
-main    = document.getElementById 'main'
-spinner = document.getElementById 'spinner'
-
-show = (el) -> el.style.display = 'block'
-hide = (el) -> el.style.display = 'none'
-
-navigate = (delay) ->
-  show spinner
-  page = location.hash.substring(1) || 'collage-page'
-  console.log "... requesting #{page}"
-
-  success = ->
-    hide spinner
-    hide main
-    main.innerHTML = ""
-    console.log "... receiving data for #{page}"
-    title.innerText = document.title = page
-    Router.route page
-    show main
-
-  setTimeout success, 500
-
-navigate()
-window.onhashchange = navigate
+window.__contentsHandler = (page) ->
+  mapper.map page

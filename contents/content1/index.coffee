@@ -1,12 +1,10 @@
-MODULE_NAME = "content1"
+##
+# graph-cluster-name: entry-point
+##
+MODULE_NAME = 'content1-enhancement'
 console = require('logger').for(MODULE_NAME)
-console.log "load"
-{ Video } = require 'video.es6'
+console.log 'load'
 
 module.exports =
   name: 'content one'
   style: require './index.useable.scss'
-  init: ->
-    console.log '... init'
-    video = new Video "video.mp4"
-    video.play()
